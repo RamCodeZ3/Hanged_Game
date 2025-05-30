@@ -24,8 +24,8 @@ file_json = "words.json"
 words = generate_words(file_json)
 
 # Funcion para la busqueda y confirmacion de la letras
-def search_letter(array, e):
-    result = any(x == e for x in array)
-    return result
-
-Select_Words(words)
+def search_letter(array, Letter):
+     try:
+      return [(i, element) for i, element in enumerate(array) if element == Letter]
+     except Exception as e:
+         print(f"Error inesperado: {e}")
