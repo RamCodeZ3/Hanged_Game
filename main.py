@@ -36,7 +36,7 @@ class Game_room(Screen):
                 welcome_message.update("Error: No se pudo seleccionar una palabra válida")
                 return
             # Crea una lista de asteriscos basada en la longitud de la palabra
-            self.signs = ["*"] * len(self.selected_word)
+            self.signs = ["❌"] * len(self.selected_word)
             # Pasa la palabra seleccionada y los signos a la pantalla Game
             self.app.push_screen(Game(self.selected_word, self.signs))
         
@@ -48,8 +48,7 @@ class Game(Screen):
         super().__init__()
         self.selected_word = selected_word  # Almacena la palabra seleccionada
         self.signs = signs  # Almacena los signos (lista de asteriscos)
-        self.fallos = 0  # Contador de intentos fallidos
-        self.max_fallos = 6  # Máximo de intentos fallidos
+        self.chance = 6  # Contador de intentos fallidos
         self.letras_usadas = set()  # Letras ya intentadas
 
     def compose(self) -> ComposeResult:
@@ -58,7 +57,7 @@ class Game(Screen):
             Static("Adivina la palabra"),
             Static("".join(self.signs), id="word_Secret"),
             Static("Hora de jugar!", id="game_message"), 
-            Static(f"Fallos: {self.fallos}/{self.max_fallos}", id="fallos"),
+            Static(f"{"❤️" * self.chance}", id="life"),
             Static("Letras usadas:", id="letters_user"),
             Button("Volver", id="go_back"),
         )
@@ -71,7 +70,7 @@ class Game(Screen):
     def on_key(self, event: Key) -> None:
         letter = event.key
         # Verifica si la tecla es una letra válida (a-z) y si el juego no ha terminado
-        if letter.isalpha() and len(letter) == 1 and self.fallos < self.max_fallos:
+        if letter.isalpha() and len(letter) == 1 and self.chance > 0:
             # Verifica si la letra ya fue usada
             if letter.lower() in self.letras_usadas:
                 self.query_one("#game_message", Static).update(
@@ -95,14 +94,14 @@ class Game(Screen):
                 if self.signs == list(self.selected_word.lower()):
                     self.query_one("#word_Secret", Static).update("¡Ganaste!")
             else:
-                # Incrementa el contador de fallos
-                self.fallos += 1
-                self.query_one("#fallos", Static).update(f"Fallos: {self.fallos}/{self.max_fallos}")
+                # Incrementa el contador de life
+                self.chance -= 1
+                self.query_one("#life", Static).update(f"{"❤️" * self.chance}")
                 self.query_one("#game_message", Static).update(
                     f"No se encontró la letra '{letter}'. Intenta de nuevo."
                 )
                 # Verifica si el jugador ha perdido
-                if self.fallos >= self.max_fallos:
+                if self.chance == 0:
                     self.query_one("#game_message", Static).update(
                         f"Perdiste. La palabra era '{self.selected_word}'."
                     )
