@@ -1,34 +1,152 @@
-[
-    "abogado", "acelerador", "agua", "aire", "alcalde", "animal", "apertura", "arte", "banco", "barco",
-    "barrio", "biblioteca", "blanco", "boca", "bola", "bomba", "bueno", "caballo", "caja", "calle",
-    "cama", "candidato", "canto", "carne", "cielo", "cima", "coche", "comida", "compañero", "cosa",
-    "cuidado", "dado", "delfín", "dente", "despacho", "dibujo", "diferencia", "dinero", "doble", "educación",
-    "elefante", "escuela", "espejo", "estrella", "familia", "feliz", "fiebre", "flor", "fuerza", "fútbol",
-    "galleta", "gato", "granja", "grito", "guapo", "guerra", "hacia", "hombre", "huevo", "hotel", "idea",
-    "inmueble", "información", "inteligente", "isla", "jardín", "jirafa", "juego", "juguete", "lago",
-    "lámpara", "largo", "libro", "luna", "luz", "mamá", "manzana", "mar", "mesa", "ministro", "niño", 
-    "noche", "norte", "olla", "orden", "pájaro", "pan", "papá", "parque", "pelota", "perro", "pescado", 
-    "piedra", "pintura", "plaza", "pluma", "plano", "polvo", "puente", "ratón", "reloj", "respuesta",
-    "rojo", "silla", "sol", "sombrero", "sombra", "sueño", "superficie", "teatro", "televisión", "tierra", 
-    "toalla", "toro", "tren", "trabajo", "vacaciones", "viento", "volante", "vuelta", "agua", "aceite",
-    "animal", "almohada", "alumno", "alquiler", "asiento", "banco", "barro", "borrador", "camión", "canción", 
-    "catedral", "cerca", "cerdo", "cohete", "comedia", "computadora", "correr", "cultura", "dedo", "delfín",
-    "desayuno", "doble", "dormir", "ducha", "elefante", "empresa", "esmalte", "espejo", "esquiar", "estrella",
-    "examen", "fama", "felicidad", "fiesta", "florecer", "fruta", "galería", "gasto", "hilo", "historieta", 
-    "hombre", "incendio", "interés", "juguete", "junio", "ladrón", "lámpara", "libertad", "lima", "lucha", 
-    "maíz", "mando", "mercado", "mujer", "naranja", "nube", "número", "olla", "organismo", "periódico",
-    "plaza", "plástico", "profesor", "pueblo", "quinto", "quinto", "ratón", "reina", "repetir", "revolución",
-    "silla", "sociedad", "sombra", "sonrisa", "sueldo", "tercer", "trabajo", "tren", "universidad", "viento",
-    "vuelta", "zona", "azúcar", "batido", "bebida", "bello", "boca", "borrón", "buzo", "cabra", "cachorro",
-    "caja", "cambio", "canto", "cerca", "circo", "clima", "coche", "codo", "cultura", "dado", "deber",
-    "dedo", "delfín", "dibujo", "diente", "divertido", "dormir", "dueño", "emoción", "enfermo", "escribir",
-    "esfuerzo", "espejo", "estrella", "felicidad", "flor", "fondo", "fuerza", "gafas", "gato", "guerra",
-    "guía", "huevo", "hermano", "historieta", "hombre", "hospital", "hotel", "igualdad", "isla", "juego",
-    "juicio", "lago", "lámpara", "luna", "magia", "manos", "médico", "naranja", "niña", "noche", "océano",
-    "olla", "papa", "parque", "pelota", "perro", "pescado", "piedra", "plaza", "pluma", "pollo", "profesor",
-    "pulgar", "quinto", "ratón", "reina", "remolacha", "risa", "rojo", "ruto", "silla", "sombra", "sol",
-    "sonrisa", "teatro", "teléfono", "tren", "vacío", "vaca", "viento", "vuelta", "zona", "acuerdo", "abajo",
-    "alquiler", "amor", "aseo", "banco", "borrar", "cachorro", "carga", "cielo", "comida", "cultivar", "dedo",
-    "días", "correr", "familia", "gato", "hermano", "hombre", "juego", "luna", "manzana", "mujer", "noche",
-    "niño", "silla", "sol", "tren", "universidad", "viento", "zona", "zoólogo", "zorro"
-]
+{
+  "Animal": [
+    "perro", "gato", "elefante", "tigre", "león", "jirafa", "cebra", "rinoceronte", "hipopótamo", "canguro",
+    "mono", "oso", "lobo", "zorro", "ciervo", "conejo", "ardilla", "mapache", "castor", "águila",
+    "halcón", "búho", "pingüino", "tucán", "loro", "serpiente", "cocodrilo", "tortuga", "lagarto", "camaleón"
+  ],
+  "Vegetal": [
+    "árbol", "flor", "hoja", "raíz", "tallo", "semilla", "fruto", "rama", "césped", "matorral",
+    "helecho", "cactus", "bambú", "palmera", "hiedra", "musgo", "liana", "arbusto", "pino", "roble",
+    "abedul", "sauce", "mangle", "orquídea", "girasol", "rosa", "tulipán", "lirio", "margarita", "clavel"
+  ],
+  "Deporte": [
+    "fútbol", "baloncesto", "tenis", "natación", "atletismo", "ciclismo", "voleibol", "béisbol", "hockey", "boxeo",
+    "golf", "rugby", "esgrima", "esquí", "snowboard", "patinaje", "surf", "escalada", "gimnasia", "lucha",
+    "judo", "karate", "taekwondo", "críquet", "bádminton", "pingpong", "remo", "vela", "tiro", "arqueria"
+  ],
+  "Arte Marcial": [
+    "karate", "judo", "taekwondo", "kungfu", "jiujitsu", "aikido", "capoeira", "kendo", "muaythai", "sambo",
+    "eskrima", "silat", "hapkido", "ninjutsu", "wingchun", "savate", "kravmaga", "sumo", "taichi", "kyokushin",
+    "jeetkunedo", "wushu", "baguazhang", "xingyi", "shorinji", "kenpo", "iaido", "naginata", "bojutsu", "sanda"
+  ],
+  "Frutas": [
+    "manzana", "naranja", "plátano", "fresa", "uva", "mango", "piña", "melón", "sandía", "kiwi",
+    "pera", "durazno", "cereza", "ciruela", "granada", "higo", "limón", "mandarina", "guayaba", "papaya",
+    "maracuyá", "frambuesa", "arándano", "lichi", "tamarindo", "coco", "aguacate", "pomelo", "nispero", "caqui"
+  ],
+  "Colores": [
+    "rojo", "azul", "verde", "amarillo", "naranja", "morado", "rosa", "marrón", "negro", "blanco",
+    "gris", "turquesa", "violeta", "cyan", "magenta", "beige", "dorado", "plateado", "añil", "escarlata",
+    "coral", "oliva", "lavanda", "púrpura", "salmón", "celeste", "ambar", "jade", "esmeralda", "carmin"
+  ],
+  "Emociones": [
+    "alegría", "tristeza", "miedo", "enojo", "amor", "sorpresa", "asco", "vergüenza", "culpa", "felicidad",
+    "ansiedad", "esperanza", "orgullo", "celos", "envidia", "paz", "frustración", "nostalgia", "euforia", "melancolía",
+    "gratitud", "dolor", "confusión", "calma", "desesperación", "entusiasmo", "ira", "ternura", "pánico", "satisfacción"
+  ],
+  "Objetos": [
+    "mesa", "silla", "libro", "lápiz", "cuaderno", "reloj", "teléfono", "computadora", "lámpara", "espejo",
+    "ventana", "puerta", "cama", "almohada", "cobija", "plato", "cuchara", "tenedor", "cuchillo", "vaso",
+    "bolígrafo", "televisor", "radio", "paraguas", "llave", "candado", "maleta", "bolsa", "refrigerador", "microondas"
+  ],
+  "Acciones": [
+    "correr", "saltar", "caminar", "nadar", "volar", "cantar", "bailar", "escribir", "leer", "dibujar",
+    "pintar", "cocinar", "comer", "beber", "dormir", "despertar", "reír", "llorar", "hablar", "escuchar",
+    "mirar", "tocar", "abrazar", "besar", "jugar", "trabajar", "estudiar", "viajar", "cazar", "construir"
+  ],
+  "Naturaleza": [
+    "montaña", "río", "lago", "mar", "océano", "bosque", "desierto", "selva", "playa", "volcán",
+    "cueva", "cañón", "glaciar", "catarata", "arrecife", "pradera", "pantano", "tundra", "sabana", "acantilado",
+    "colina", "valle", "duna", "laguna", "estuario", "geiser", "manantial", "oasis", "meseta", "península"
+  ],
+  "Instrumentos musicales": [
+    "guitarra", "piano", "violín", "batería", "flauta", "trompeta", "saxofón", "clarinete", "arpa", "bajo",
+    "ukelele", "violonchelo", "trombón", "oboe", "fagot", "acordeón", "banjo", "mandolina", "tambor", "maracas",
+    "xilófono", "triángulo", "cítara", "lira", "cornamusa", "gaita", "theremin", "sintetizador", "címbalos", "gong"
+  ],
+  "Parte del cuerpo": [
+    "cabeza", "brazo", "pierna", "mano", "pie", "ojo", "nariz", "boca", "oreja", "cuello",
+    "hombro", "pecho", "espalda", "cintura", "cadera", "rodilla", "tobillo", "codo", "muñeca", "dedo",
+    "corazón", "pulmón", "hígado", "riñón", "estómago", "intestino", "hueso", "músculo", "piel", "sangre"
+  ],
+  "Herramientas": [
+    "martillo", "destornillador", "sierra", "taladro", "alicate", "llave", "cincel", "nivel", "metro", "tijera",
+    "cuchillo", "pala", "pico", "hacha", "azada", "serrucho", "clavo", "tornillo", "tuercas", "arandela",
+    "cepillo", "lima", "broca", "cortadora", "soldador", "pinza", "machete", "escalpelo", "grapa", "gancho"
+  ],
+  "Mitología y fantasía": [
+    "dragón", "unicornio", "fénix", "grifo", "centauro", "minotauro", "siren", "elfo", "ogro", "troll",
+    "hada", "gnomo", "vampiro", "licántropo", "quimera", "hidra", "basilisco", "golem", "esfinge", "kraken",
+    "pégaso", "cíclope", "sátiro", "ninfas", "duende", "yeti", "bigfoot", "cerbero", "medusa", "harpía"
+  ],
+  "País": [
+    "México", "España", "Argentina", "Brasil", "Chile", "Perú", "Colombia", "Venezuela", "Uruguay", "Paraguay",
+    "Ecuador", "Bolivia", "Cuba", "Panamá", "Guatemala", "Honduras", "Nicaragua", "Costa Rica", "El Salvador", "República Dominicana",
+    "Francia", "Italia", "Alemania", "Japón", "China", "India", "Rusia", "Canadá", "Australia", "Egipto"
+  ],
+  "Vehículo": [
+    "coche", "bicicleta", "motocicleta", "autobús", "camión", "tren", "avión", "barco", "submarino", "helicóptero",
+    "tractor", "patineta", "velero", "yate", "ferry", "tranvía", "carroza", "tanque", "cohete", "globo",
+    "monopatín", "cuatrimoto", "carreta", "rickshaw", "segway", "dirigible", "hidroavión", "grúa", "montacargas", "taxi"
+  ],
+  "Ropas": [
+    "camisa", "pantalón", "vestido", "falda", "chaqueta", "abrigo", "sombrero", "bufanda", "guantes", "calcetines",
+    "zapatos", "botas", "sandalias", "suéter", "camiseta", "cinturón", "corbata", "chaleco", "pijama", "bata",
+    "sudadera", "gabardina", "poncho", "túnica", "leggings", "overol", "kimono", "toga", "chamarra", "parka"
+  ],
+  "Profesiones": [
+    "médico", "maestro", "ingeniero", "abogado", "policía", "bombero", "chef", "carpintero", "electricista", "mecánico",
+    "arquitecto", "periodista", "escritor", "pintor", "músico", "actor", "bailarín", "piloto", "programador", "diseñador",
+    "veterinario", "dentista", "enfermero", "contador", "psicólogo", "fotógrafo", "juez", "científico", "astronauta", "soldado"
+  ],
+  "Verbos": [
+    "ser", "estar", "tener", "hacer", "ir", "venir", "decir", "saber", "poder", "querer",
+    "comer", "beber", "vivir", "amar", "trabajar", "jugar", "correr", "saltar", "cantar", "bailar",
+    "escribir", "leer", "dormir", "soñar", "reír", "llorar", "estudiar", "viajar", "cocinar", "pintar"
+  ],
+  "Clima": [
+    "sol", "lluvia", "nieve", "viento", "nube", "tormenta", "niebla", "granizo", "trueno", "relámpago",
+    "calor", "frío", "humedad", "sequía", "brisa", "huracán", "tornado", "llovizna", "rocío", "helada",
+    "chubasco", "neblina", "ventisca", "cielo", "nublado", "despejado", "bochorno", "gélido", "tibio", "tempestad"
+  ],
+  "Plantas": [
+    "rosa", "tulipán", "girasol", "orquídea", "cactus", "bambú", "palmera", "helecho", "pino", "roble",
+    "sauce", "abedul", "mangle", "hiedra", "musgo", "liana", "clavel", "margarita", "lirio", "jazmín",
+    "lavanda", "romero", "albahaca", "menta", "tomillo", "aloe", "nopal", "magnolia", "camelia", "azucena"
+  ],
+  "Planetas": [
+    "Mercurio", "Venus", "Tierra", "Marte", "Júpiter", "Saturno", "Urano", "Neptuno", "Plutón", "Sol",
+    "Luna", "Ceres", "Eris", "Haumea", "Makemake", "Fobos", "Deimos", "Ganimedes", "Calisto", "Europa",
+    "Ío", "Titán", "Encélado", "Mimas", "Tritón", "Caronte", "Dione", "Rea", "Hiperión", "Japeto"
+  ],
+  "Ciudades": [
+    "Madrid", "Barcelona", "México", "Bogotá", "Lima", "Santiago", "Buenos Aires", "Río", "Caracas", "Quito",
+    "Lisboa", "París", "Londres", "Berlín", "Tokio", "Pekín", "Moscú", "Nueva York", "Sídney", "El Cairo",
+    "Roma", "Atenas", "Estambul", "Bangkok", "Seúl", "Delhi", "Toronto", "Chicago", "Miami", "Lagos"
+  ],
+  "Bebidas": [
+    "agua", "café", "té", "jugo", "leche", "refresco", "cerveza", "vino", "whisky", "ron",
+    "tequila", "vodka", "sidra", "limonada", "batido", "sangría", "champán", "licor", "sake", "mezcal",
+    "atole", "chocolate", "mate", "pulque", "tisana", "kombucha", "cóctel", "smoothie", "infusión", "gingerale"
+  ],
+  "Insectos": [
+    "mosca", "mosquito", "abeja", "avispa", "hormiga", "escarabajo", "mariposa", "polilla", "saltamontes", "grillo",
+    "cucaracha", "libélula", "mariquita", "araña", "ciempiés", "milpiés", "termita", "pulgón", "chinche", "oruga",
+    "gusano", "luciérnaga", "escorpión", "tábano", "pulga", "piojo", "garrapata", "ácaro", "zángano", "mantis"
+  ],
+  "Estrellas y astros": [
+    "Sol", "Luna", "estrella", "planeta", "cometa", "meteorito", "asteroide", "galaxia", "nebulosa", "constelación",
+    "Sirio", "Vega", "Betelgeuse", "Rigel", "Aldebarán", "Antares", "Polaris", "Canopus", "Arcturus", "Procyon",
+    "Andrómeda", "Orión", "Casiopea", "Centauro", "Cruz", "Pegaso", "Perseo", "Cisne", "Lira", "Escorpio"
+  ],
+  "Edificios": [
+    "casa", "edificio", "torre", "castillo", "palacio", "iglesia", "mezquita", "templo", "catedral", "rascacielos",
+    "escuela", "hospital", "teatro", "museo", "biblioteca", "estadio", "gimnasio", "fábrica", "almacén", "mercado",
+    "puente", "faro", "molino", "bodega", "granero", "hangar", "estación", "aeropuerto", "puerto", "observatorio"
+  ],
+  "Electrodomésticos": [
+    "refrigerador", "lavadora", "secadora", "microondas", "horno", "licuadora", "tostadora", "cafetera", "televisor", "radio",
+    "aspiradora", "ventilador", "calefactor", "plancha", "batidora", "freidora", "lavavajillas", "congelador", "humidificador", "deshumidificador",
+    "estufa", "extractor", "procesador", "exprimidor", "sandwichera", "parilla", "robot", "cortadora", "máquina", "esterilizador"
+  ],
+  "Criaturas mitológicas": [
+    "dragón", "unicornio", "fénix", "grifo", "centauro", "minotauro", "sirena", "elfo", "ogro", "troll",
+    "hada", "gnomo", "vampiro", "licántropo", "quimera", "hidra", "basilisco", "golem", "esfinge", "kraken",
+    "pégaso", "cíclope", "sátiro", "ninfa", "duende", "yeti", "bigfoot", "cerbero", "medusa", "harpía"
+  ],
+  "Géneros literarios": [
+    "novela", "poesía", "cuento", "ensayo", "drama", "teatro", "fábula", "épica", "lírica", "sátira",
+    "biografía", "autobiografía", "crónica", "fantasía", "ciencia ficción", "terror", "misterio", "romance", "histórico", "aventura",
+    "tragedia", "comedia", "melodrama", "parodia", "mitología", "realismo", "surrealismo", "costumbrismo", "policial", "distopía"
+  ]
+}

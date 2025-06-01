@@ -10,15 +10,18 @@ def generate_words(files):
     except FileNotFoundError:
         print(f"Error: El archivo {files} no se encontró")
     except Exception as e:
-        print(f"Error inesperado:  {e}")     
+        print(f"Error inesperado: {e}")
 
 
 # Funcion para elegir la palabra clave de manera aleatoria
-def Select_Words(words):
-    if not words: 
-        return None
-    letters_quantity = len(words)
-    return random.choice(words)
+def Select_Words(word_dict):
+    if not word_dict:
+        return None, None
+    # Elegir una categoría aleatoria
+    category = random.choice(list(word_dict.keys()))
+    # Elegir una palabra aleatoria de esa categoría
+    word = random.choice(word_dict[category])
+    return category, word
 
 file_json = "words.json"
 words = generate_words(file_json)
