@@ -61,6 +61,22 @@ class Game(Screen):
         self.letras_usadas = set()          # Letras ya intentadas
         self.score = 0                      # Puntuación inicial
         self.word_complete = 0              # cantidad de palabras completadas
+        self.word_max = 100                 # cantidad de palabras a completar para ganar
+
+ # selecionar una nueva palabra y continuar el juego hasta que se complete o se pierda
+    async def continue_game(self, selected_word: str, category: str, signs: list) -> None:
+        self.selected_word = selected_word
+        self.category = category
+        self.signs = ["❌"] * len(self.selected_word)
+        self.chance = 6
+        self.letras_usadas.clear()
+
+       # Pausa para poder mostrar la palabra anterior antes de iniciar una nueva
+        self.query_one("#word_Secret", Static).update("".join(self.signs))
+        self.query_one("#category", Static).update(f"Categoría: {self.category}")
+        self.query_one("#game_message", Static).update("Hora de una nueva palabra!")
+        self.query_one("#life", Static).update(f"{"❤️" * self.chance}")
+        self.query_one("#letters_user", Static).update("Letras usadas:")
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -80,7 +96,7 @@ class Game(Screen):
         if event.button.id == "go_back":
             self.app.pop_screen()
 
-    def on_key(self, event: Key) -> None:
+    async def on_key(self, event: Key) -> None:
         letter = event.key
         # Verifica si la tecla es una letra válida (a-z) y si el juego no ha terminado
         if letter.isalpha() and len(letter) == 1 and self.chance > 0:
@@ -106,11 +122,16 @@ class Game(Screen):
                 self.score += 5 # Incrementa la puntuación
                 self.query_one("#score", Static).update(f"Puntuación: {self.score}")
                 # Verifica si el jugador ha ganado
+                New_word = func.Select_Words(words)
+                
                 if self.signs == list(self.selected_word.lower()):
                     self.query_one("#game_message", Static).update("¡Ganaste!")
                     self.score += 25
                     self.word_complete += 1
                     self.query_one("#score", Static).update(f"Puntuación: {self.score}")
+                    category, word = New_word
+                    self.set_timer(1.5, lambda: self.continue_game(word, category, ['❌'] * len(word)))
+                    
             else:
                 # Incrementa el contador de life
                 self.chance -= 1
@@ -130,6 +151,7 @@ class Game_over(Screen):
         self.correct_word = selected_word
         self.score = score
         self.word_complete = word_complete
+        self.word_max = 100                 # cantidad de palabras a completar para ganar
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -137,7 +159,7 @@ class Game_over(Screen):
             Static("Juego terminado la palabra correcta era:", id="game_over_message"),
             Static(f"{self.correct_word}", id="correct_word"),  # Aquí se actualizará la palabra correcta
             Static(f"Puntuación final: {self.score}", id="final_score"),
-            Static(f"Palabras completadas: {self.word_complete}/800", id="words_completed"),
+            Static(f"Palabras completadas: {self.word_complete}/{self.word_max}", id="words_completed"),
             Button("Volver al inicio", id="restart"),
         )
         yield Footer()
