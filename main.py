@@ -72,7 +72,7 @@ class Game(Screen):
             self.query_one("#category", Static).update(f"Categoría: {self.category}")
             self.query_one("#word_Secret", Static).update("".join(self.signs))
             self.query_one("#game_message", Static).update("Hora de jugar!")
-            self.query_one("#life", Static).update(f"{"❤️" * self.chance}")
+            self.query_one("#life", Static).update("#" * self.chance)
             self.query_one("#letters_user", Static).update("Letras usadas:")
             self.query_one("#game_title", Static).update(f"Adivina la palabra: {self.selected_word}")
         finally: 
@@ -86,7 +86,7 @@ class Game(Screen):
             Static("".join(self.signs), id="word_Secret"),
             Static("Hora de jugar!", id="game_message"),
             Static(f"Puntuación: {self.score}", id="score"), 
-            Static(f"{"❤️" * self.chance}", id="life"),
+            Static("#" * self.chance, id="life"),
             Static("Letras usadas:", id="letters_user"),
             Button("Volver", id="go_back"),
         )
@@ -131,7 +131,7 @@ class Game(Screen):
          else:
              print(f"No se encontró la letra '{letter}' en la palabra.")
              self.chance -= 1
-             self.query_one("#life", Static).update(f"{"❤️" * self.chance}")
+             self.query_one("#life", Static).update("#" * self.chance)
              self.query_one("#game_message", Static).update(
                  f"No se encontró la letra '{letter}'. Intenta de nuevo."
              )
