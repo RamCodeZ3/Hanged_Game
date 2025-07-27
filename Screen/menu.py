@@ -33,7 +33,7 @@ class Menu(Screen):
                     Verifica el archivo words.json"""
                 )
 
-                self.app.push_screen("game")
+            self.app.push_screen("game")
 
         elif event.button.id == "exit":
             self.app.exit()

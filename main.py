@@ -7,13 +7,13 @@ from Screen.game_over import Game_over
 class MyApp(App):
 
     SCREENS = {
-        "room": Menu,
+        "menu": Menu,
         "over": Game_over,
         "game": Game,
     }
 
     def on_mount(self) -> None:
-        self.push_screen("room")
+        self.push_screen("menu")
 
 
 if __name__ == "__main__":

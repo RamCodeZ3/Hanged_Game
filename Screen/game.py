@@ -71,7 +71,28 @@ class Game(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "go_back":
-            self.app.pop_screen()
+            words = func.generate_words("words.json")
+            new_word = func.Select_Words(words)
+
+            if not new_word or not isinstance(
+                new_word,
+                tuple
+                ) or len(
+                    new_word
+                     ) != 2:
+
+                self.query_one("#game_message", Static).update(
+                 "Error al reiniciar: no se pudo obtener nueva palabra"
+                )
+                return
+
+        category, word = new_word
+        self.set_timer(
+            0.5,
+            lambda: self.continue_game(word, category, ["❌"] * len(word))
+        )
+        self.app.pop_screen()
+        self.app.push_screen("menu")
 
     async def on_key(self, event: Key) -> None:
         words = func.generate_words("words.json")

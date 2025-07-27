@@ -36,7 +36,7 @@ class Game_over(Screen):
         if event.button.id == "restart":
             while len(self.app.screen_stack) > 1:
                 self.app.pop_screen()
-            self.app.push_screen("room")
+            self.app.push_screen("menu")
 
         elif event.button.id == "retry":
             while len(self.app.screen_stack) > 1:
