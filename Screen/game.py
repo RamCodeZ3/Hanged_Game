@@ -19,7 +19,7 @@ class Game(Screen):
         self.chance = 6
         self.Letter_used = set()
         self.score = score
-        self.word_complete = 0
+        self.word_complete = 99
         self.word_max = 100
 
     async def continue_game(
@@ -108,6 +108,7 @@ class Game(Screen):
             self.query_one("#letters_user", Static).update(
                 f"Letras usadas: {', '.join(sorted(self.Letter_used))}"
             )
+
             coincidencias = func.search_letter(self.selected_word, letter)
 
             if coincidencias:
@@ -127,6 +128,7 @@ class Game(Screen):
                     self.query_one("#score", Static).update(
                         f"Puntuación: {self.score}"
                     )
+
                     new_word = func.Select_Words(words)
                     if not new_word or not isinstance(
                          new_word,
@@ -136,6 +138,7 @@ class Game(Screen):
                             "Error: No se pudo seleccionar una nueva palabra"
                         )
                         return
+
                     category, word = new_word
                     self.set_timer(
                         1.5,
@@ -166,3 +169,12 @@ class Game(Screen):
         else:
             self.query_one("#game_message", Static).update("""Por favor,
                  ingresa una letra válida (una sola letra del alfabeto).""")
+
+        if self.word_complete == self.word_max:
+            category, word = new_word
+            self.set_timer(
+                0.5,
+                lambda: self.continue_game(word, category, ["❌"] * len(word))
+            )
+            self.app.pop_screen()
+            self.app.push_screen("won")

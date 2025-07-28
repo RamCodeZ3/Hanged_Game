@@ -2,6 +2,7 @@ from textual.app import App
 from Screen.menu import Menu
 from Screen.game import Game
 from Screen.game_over import Game_over
+from Screen.game_won import Game_won
 
 
 class MyApp(App):
@@ -10,6 +11,7 @@ class MyApp(App):
         "menu": Menu,
         "over": Game_over,
         "game": Game,
+        "won": Game_won,
     }
 
     def on_mount(self) -> None:
