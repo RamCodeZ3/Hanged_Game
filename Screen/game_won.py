@@ -49,3 +49,6 @@ class Game_won(Screen):
                 f"Error al intentar reiniciar el juego: {str(e)}",
                 severity="error"
             )
+
+    def on_mount(self) -> None:
+        self.add_class("screen_game_won")

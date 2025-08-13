@@ -37,3 +37,6 @@ class Menu(Screen):
 
         elif event.button.id == "exit":
             self.app.exit()
+
+    def on_mount(self) -> None:
+        self.add_class("screen_menu")

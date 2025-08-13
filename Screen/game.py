@@ -178,3 +178,6 @@ class Game(Screen):
             )
             self.app.pop_screen()
             self.app.push_screen("won")
+
+    def on_mount(self) -> None:
+        self.add_class("screen_game")

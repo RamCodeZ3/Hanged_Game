@@ -1,0 +1,21 @@
+App {
+    background: black;
+    color: white;
+}
+
+/*Estilos para menus*/
+.screen_menu{
+    text-align: justify;
+}
+
+.screen_menu #welcome_message {
+    text-style: bold;
+    text-align: center;
+    margin: 1;
+}
+
+/*Estilos para game*/
+
+/*Estilos para game_over*/
+
+/*Estilos para game_won*/

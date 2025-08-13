@@ -48,3 +48,6 @@ class Game_over(Screen):
                  new_category,
                  ["❌"] * len(self.correct_word), 0)
             )
+
+    def on_mount(self) -> None:
+        self.add_class("screen_game_over")
