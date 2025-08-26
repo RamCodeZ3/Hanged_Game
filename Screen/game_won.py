@@ -38,12 +38,7 @@ class Game_won(Screen):
                 while len(self.app.screen_stack) > 1:
                     self.app.pop_screen()
 
-                self.app.push_screen(
-                    "game",
-                    (new_word,
-                     new_category,
-                     ["❌"] * len(new_word), 0)
-                )
+                self.app.push_screen("game")
         except Exception as e:
             self.notify(
                 f"Error al intentar reiniciar el juego: {str(e)}",

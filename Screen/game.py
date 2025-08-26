@@ -6,22 +6,33 @@ from textual.events import Key
 import functions as func
 from Screen.game_over import Game_over
 
-words = func.generate_words("words.json")
-result = func.Select_Words(words)
-
 
 class Game(Screen):
-    def __init__(self, score: int = 0):
+    def __init__(self):
         super().__init__()
-        self.category, self.selected_word = result
-        self.selected_word = self.selected_word.lower()
-        self.signs = ["❌"] * len(self.selected_word)
+        self.score = 99
+        self.word_complete = 0
+        self.word_max = 100
+        # Inicializamos variables vacías
+        self.category = ""
+        self.selected_word = ""
+        self.signs = []
         self.chance = 6
         self.Letter_used = set()
-        self.score = score
+    
+    # Reinicia los datos del juego cuando entar de nuevo a la pantallas
+    def reset_data(self):
+        words = func.generate_words("words.json")
+        category, word = func.Select_Words(words)
+        self.category = category
+        self.selected_word = word.lower()
+        self.signs = ["❌"] * len(self.selected_word)
+        self.chance = 6
+        self.Letter_used.clear()
         self.word_complete = 99
-        self.word_max = 100
-
+        self.score = 0
+    
+    #funcion que se encarga continuar el juego hasta que el usuario pierda
     async def continue_game(
          self,
          selected_word: str,
@@ -71,28 +82,8 @@ class Game(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "go_back":
-            words = func.generate_words("words.json")
-            new_word = func.Select_Words(words)
-
-            if not new_word or not isinstance(
-                new_word,
-                tuple
-                ) or len(
-                    new_word
-                     ) != 2:
-
-                self.query_one("#game_message", Static).update(
-                 "Error al reiniciar: no se pudo obtener nueva palabra"
-                )
-                return
-
-        category, word = new_word
-        self.set_timer(
-            0.5,
-            lambda: self.continue_game(word, category, ["❌"] * len(word))
-        )
-        self.app.pop_screen()
-        self.app.push_screen("menu")
+            self.app.pop_screen()
+            self.app.push_screen("menu")
 
     async def on_key(self, event: Key) -> None:
         words = func.generate_words("words.json")
@@ -128,6 +119,24 @@ class Game(Screen):
                     self.query_one("#score", Static).update(
                         f"Puntuación: {self.score}"
                     )
+
+                    if self.word_complete == self.word_max:
+                        words = func.generate_words("words.json")
+                        new_word = func.Select_Words(words)
+                        if not new_word or not isinstance(new_word, tuple) or len(new_word) != 2:
+                            self.query_one("#game_message", Static).update(
+                            "Error: No se pudo seleccionar una nueva palabra"
+                            )
+                            return
+
+                        category, word = new_word
+                        self.set_timer(
+                        0.5,
+                        lambda: self.continue_game(word, category, ["❌"] * len(word))
+                        )
+                        self.app.pop_screen()
+                        self.app.push_screen("won")
+                        return
 
                     new_word = func.Select_Words(words)
                     if not new_word or not isinstance(
@@ -170,14 +179,19 @@ class Game(Screen):
             self.query_one("#game_message", Static).update("""Por favor,
                  ingresa una letra válida (una sola letra del alfabeto).""")
 
-        if self.word_complete == self.word_max:
-            category, word = new_word
-            self.set_timer(
-                0.5,
-                lambda: self.continue_game(word, category, ["❌"] * len(word))
-            )
-            self.app.pop_screen()
-            self.app.push_screen("won")
 
     def on_mount(self) -> None:
+        """Cada vez que se monta la pantalla se reinician los datos"""
+        self.reset_data()
+
+        # Actualizamos los widgets
+        self.query_one("#game_title", Static).update(
+            f"Adivina la palabra: {self.selected_word}"
+        )
+        self.query_one("#category", Static).update(f"Categoría: {self.category}")
+        self.query_one("#word_Secret", Static).update("".join(self.signs))
+        self.query_one("#game_message", Static).update("Hora de jugar!")
+        self.query_one("#score", Static).update(f"Puntuación: {self.score}")
+        self.query_one("#life", Static).update("#" * self.chance)
+        self.query_one("#letters_user", Static).update("Letras usadas:")
         self.add_class("screen_game")
