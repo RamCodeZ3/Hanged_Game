@@ -3,9 +3,11 @@ from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
 from textual.events import Key
+import os
 import functions as func
 from Screen.game_over import Game_over
 
+PATH = os.path.abspath("src/data/words.json")
 
 class Game(Screen):
     def __init__(self):
@@ -22,7 +24,7 @@ class Game(Screen):
     
     # Reinicia los datos del juego cuando entar de nuevo a la pantallas
     def reset_data(self):
-        words = func.generate_words("words.json")
+        words = func.generate_words(PATH)
         category, word = func.Select_Words(words)
         self.category = category
         self.selected_word = word.lower()
@@ -86,7 +88,7 @@ class Game(Screen):
             self.app.push_screen("menu")
 
     async def on_key(self, event: Key) -> None:
-        words = func.generate_words("words.json")
+        words = func.generate_words(PATH)
         letter = event.key
 
         if letter.isalpha() and len(letter) == 1 and self.chance > 0:
@@ -121,7 +123,7 @@ class Game(Screen):
                     )
 
                     if self.word_complete == self.word_max:
-                        words = func.generate_words("words.json")
+                        words = func.generate_words(PATH)
                         new_word = func.Select_Words(words)
                         if not new_word or not isinstance(new_word, tuple) or len(new_word) != 2:
                             self.query_one("#game_message", Static).update(
