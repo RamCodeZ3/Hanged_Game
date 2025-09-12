@@ -40,9 +40,6 @@ class Game_over(Screen):
         elif event.button.id == "retry":
             while len(self.app.screen_stack) > 1:
                 self.app.pop_screen()
-            self.app.pop_screen()
-            game = self.app.get_screen("game")
-            game.reset_data()
             self.app.push_screen("game")
 
     def on_mount(self) -> None:

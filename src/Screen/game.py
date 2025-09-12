@@ -12,9 +12,9 @@ PATH = os.path.abspath("src/data/words.json")
 class Game(Screen):
     def __init__(self):
         super().__init__()
-        self.score = 99
+        self.score = 0
         self.word_complete = 0
-        self.word_max = 100
+        self.word_max = 10
         # Inicializamos variables vacías
         self.category = ""
         self.selected_word = ""
@@ -31,8 +31,20 @@ class Game(Screen):
         self.signs = ["❌"] * len(self.selected_word)
         self.chance = 6
         self.Letter_used.clear()
-        self.word_complete = 99
+        self.word_complete = 0
         self.score = 0
+        
+        # Actualizamos los widgets
+        self.query_one("#game_title", Static).update(
+            f"Adivina la palabra: {self.selected_word}"
+        )
+        self.query_one("#category", Static).update(f"Categoría: {self.category}")
+        self.query_one("#word_Secret", Static).update("".join(self.signs))
+        self.query_one("#game_message", Static).update("Hora de jugar!")
+        self.query_one("#score", Static).update(f"Puntuación: {self.score}")
+        self.query_one("#life", Static).update("#" * self.chance)
+        self.query_one("#letters_user", Static).update("Letras usadas:")
+        self.add_class("screen_game")
     
     #funcion que se encarga continuar el juego hasta que el usuario pierda
     async def continue_game(
@@ -84,6 +96,7 @@ class Game(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "go_back":
+            self.reset_data()
             self.app.pop_screen()
             self.app.push_screen("menu")
 
@@ -136,6 +149,7 @@ class Game(Screen):
                         0.5,
                         lambda: self.continue_game(word, category, ["❌"] * len(word))
                         )
+                        self.reset_data()
                         self.app.pop_screen()
                         self.app.push_screen("won")
                         return
@@ -173,6 +187,7 @@ class Game(Screen):
                 if self.chance == 0:
                     word_category = (self.selected_word, self.category)
                     score_wordcompleted = (self.score, self.word_complete)
+                    self.reset_data()
                     self.app.push_screen(
                         Game_over(word_category, score_wordcompleted)
                     )
@@ -185,15 +200,4 @@ class Game(Screen):
     def on_mount(self) -> None:
         """Cada vez que se monta la pantalla se reinician los datos"""
         self.reset_data()
-
-        # Actualizamos los widgets
-        self.query_one("#game_title", Static).update(
-            f"Adivina la palabra: {self.selected_word}"
-        )
-        self.query_one("#category", Static).update(f"Categoría: {self.category}")
-        self.query_one("#word_Secret", Static).update("".join(self.signs))
-        self.query_one("#game_message", Static).update("Hora de jugar!")
-        self.query_one("#score", Static).update(f"Puntuación: {self.score}")
-        self.query_one("#life", Static).update("#" * self.chance)
-        self.query_one("#letters_user", Static).update("Letras usadas:")
-        self.add_class("screen_game")
+        

@@ -3,8 +3,11 @@ from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
 import functions as func
+import os
 
-words = func.generate_words("words.json")
+PATH = "src/data/words.json"
+
+words = func.generate_words(PATH)
 
 
 class Menu(Screen):
