@@ -6,6 +6,7 @@ App {
 /*Estilos para menus*/
 .screen_menu{
     text-align: justify;
+    color: white;
 }
 
 .screen_menu #welcome_message {
@@ -14,7 +15,30 @@ App {
     margin: 1;
 }
 
+.screen_menu #start {
+    background: green;
+    width: 100%;
+}
+
+.screen_menu #exit {
+    background: orange;
+    width: 100%;
+}
+
+
 /*Estilos para game*/
+.screen_game{
+    text-align: justify;
+    color: white;
+}
+
+.screen_game #game_title{
+    text-align: justify;
+}
+
+.screen_game #go_back {
+    background: orange;
+}
 
 /*Estilos para game_over*/
 

@@ -35,16 +35,12 @@ class Game(Screen):
         self.score = 0
         
         # Actualizamos los widgets
-        self.query_one("#game_title", Static).update(
-            f"Adivina la palabra: {self.selected_word}"
-        )
         self.query_one("#category", Static).update(f"Categoría: {self.category}")
         self.query_one("#word_Secret", Static).update("".join(self.signs))
         self.query_one("#game_message", Static).update("Hora de jugar!")
         self.query_one("#score", Static).update(f"Puntuación: {self.score}")
-        self.query_one("#life", Static).update("#" * self.chance)
+        self.query_one("#life", Static).update("❤️" * self.chance)
         self.query_one("#letters_user", Static).update("Letras usadas:")
-        self.add_class("screen_game")
     
     #funcion que se encarga continuar el juego hasta que el usuario pierda
     async def continue_game(
@@ -69,29 +65,31 @@ class Game(Screen):
             )
             self.query_one("#word_Secret", Static).update("".join(self.signs))
             self.query_one("#game_message", Static).update("Hora de jugar!")
-            self.query_one("#life", Static).update("#" * self.chance)
+            self.query_one("#life", Static).update("❤️" * self.chance)
             self.query_one("#letters_user", Static).update("Letras usadas:")
-            self.query_one("#game_title", Static).update(
-                f"Adivina la palabra: {self.selected_word}"
-            )
 
         finally:
             self._continuing = False
 
     def compose(self) -> ComposeResult:
         yield Header()
+        Static(
+                f"Adivina la palabra", id="game_title"
+        ),
+        
         yield Vertical(
-            Static(
-                f"Adivina la palabra: {self.selected_word}", id="game_title"
-            ),
+            Static("Hora de jugar!", id="game_message"),
             Static(f"Categoría: {self.category}", id="category"),
             Static("".join(self.signs), id="word_Secret"),
-            Static("Hora de jugar!", id="game_message"),
+        )
+        
+        yield Vertical(
             Static(f"Puntuación: {self.score}", id="score"),
-            Static("#" * self.chance, id="life"),
+            Static("❤️" * self.chance, id="life"),
             Static("Letras usadas:", id="letters_user"),
             Button("Volver", id="go_back"),
         )
+        
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -175,7 +173,7 @@ class Game(Screen):
             else:
                 print(f"No se encontró la letra '{letter}' en la palabra.")
                 self.chance -= 1
-                self.query_one("#life", Static).update("#" * self.chance)
+                self.query_one("#life", Static).update("❤️" * self.chance)
                 self.query_one("#game_message", Static).update(
                     f"No se encontró la letra '{letter}'. Intenta de nuevo."
                 )
@@ -200,4 +198,5 @@ class Game(Screen):
     def on_mount(self) -> None:
         """Cada vez que se monta la pantalla se reinician los datos"""
         self.reset_data()
+        self.add_class("screen_game")
         
