@@ -4,10 +4,10 @@ from textual.containers import Vertical
 from textual.screen import Screen
 from textual.events import Key
 import os
-import functions as func
+import utils.fuction as func
 from Screen.game_over import Game_over
 
-PATH = os.path.abspath("src/data/words.json")
+PATH = os.path.abspath("data/words.json")
 
 class Game(Screen):
     def __init__(self):

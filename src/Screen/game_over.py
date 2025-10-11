@@ -2,7 +2,6 @@ from textual.app import ComposeResult
 from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
-import functions as func
 
 
 class Game_over(Screen):
@@ -10,7 +9,7 @@ class Game_over(Screen):
         super().__init__()
         self.correct_word, self.category = word_category
         self.score, self.word_complete = score_wordcompleted
-        self.word_max = 100
+        self.word_max = 10
 
     def compose(self) -> ComposeResult:
         yield Header()

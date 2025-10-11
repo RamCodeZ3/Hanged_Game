@@ -2,7 +2,7 @@ from textual.app import ComposeResult
 from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
-import functions as func
+import utils.fuction as func
 import os
 
 PATH = os.path.abspath("src/data/words.json")

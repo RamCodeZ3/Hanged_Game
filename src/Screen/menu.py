@@ -2,7 +2,7 @@ from textual.app import ComposeResult
 from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
-import functions as func
+import utils.fuction as func
 import os
 
 PATH = "src/data/words.json"
@@ -29,13 +29,6 @@ class Menu(Screen):
     def on_button_pressed(self, event: Button.Pressed) -> None:
 
         if event.button.id == "start":
-            if not words:
-                welcome_message = self.query_one("#welcome_message", Static)
-                welcome_message.update(
-                    """No se encontraron palabras.
-                    Verifica el archivo words.json"""
-                )
-
             self.app.push_screen("game")
 
         elif event.button.id == "exit":

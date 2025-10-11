@@ -6,7 +6,7 @@ from Screen.game_won import Game_won
 
 
 class MyApp(App):
-    CSS_PATH = "styles/styles.css"
+    CSS_PATH = "styles/styles.tcss"
 
     SCREENS = {
         "menu": Menu,

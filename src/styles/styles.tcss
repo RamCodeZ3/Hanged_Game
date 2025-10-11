@@ -40,6 +40,31 @@ App {
     background: orange;
 }
 
+Screen {
+    layout: grid;
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+#main_container {
+    layout: horizontal;
+    align-horizontal: center;
+    align-vertical: middle;
+    content-align: center middle;
+    margin: 1;
+    height: auto;
+}
+
+/* Opcional: centra las columnas Vertical */
+.seccion {
+    layout: vertical;
+    align-horizontal: center;
+    align-vertical: middle;
+    margin: 1 2;
+    content-align: center middle;
+}
+
+
 /*Estilos para game_over*/
 
 /*Estilos para game_won*/
