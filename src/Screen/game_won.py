@@ -3,9 +3,7 @@ from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
 import utils.fuction as func
-import os
 
-PATH = os.path.abspath("src/data/words.json")
 
 class Game_won(Screen):
     def compose(self) -> ComposeResult:
@@ -19,13 +17,8 @@ class Game_won(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         try:
-            words = func.generate_words(PATH)
-            if not words:
-                raise ValueError(
-                    "No se encontraron palabras en el archivo words.json"
-                )
 
-            new_category, new_word = func.Select_Words(words)
+            new_category, new_word = func.Select_Words()
             if not new_word or not new_category:
                 raise ValueError(
                     "No se pudo seleccionar una palabra o categoría válida"

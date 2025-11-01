@@ -2,12 +2,6 @@ from textual.app import ComposeResult
 from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 from textual.screen import Screen
-import utils.fuction as func
-import os
-
-PATH = "src/data/words.json"
-
-words = func.generate_words(PATH)
 
 
 class Menu(Screen):
