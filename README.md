@@ -91,7 +91,8 @@ El juego desafía al jugador a adivinar palabras dentro de una categoría determ
 
 - 🐍 **Python 3.10+**  
 - 💠 **Textual** (interfaz TUI en terminal)  
-- 📜 **JSON** (almacenamiento de palabras y categorías)  
+- 📜 **JSON** (almacenamiento de palabras y categorías)
+- TCSS (Para los estilos)
 
 ---
 
